@@ -1,10 +1,10 @@
 class CreateMatches < ActiveRecord::Migration[5.0]
   def change
-    create_table matches do |t|
-      t.string :date
+    create_table :match do |t|
       t.string :team_one
       t.string :team_two
-      t.integer :score
+      t.string :match_date
+      t.integer :match_score
       t.string :stadium
     end
   end

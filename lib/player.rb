@@ -1,3 +1,3 @@
-class Player < ActiveRecord::Base
-	belongs_to :match
-end
+# class Player < ActiveRecord::Base
+# 	belongs_to :match
+# end

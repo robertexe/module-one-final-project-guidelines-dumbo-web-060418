@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180619153959) do
+ActiveRecord::Schema.define(version: 20180619204233) do
 
   create_table "fifa_world_cups", force: :cascade do |t|
     t.string "name"
@@ -27,26 +27,11 @@ ActiveRecord::Schema.define(version: 20180619153959) do
     t.string  "match_location"
   end
 
-  create_table "players", force: :cascade do |t|
-    t.string "player_name"
-    t.string "team"
-    t.string "match"
-  end
-
   create_table "soccer_teams", force: :cascade do |t|
-    t.string "team_name"
-    t.string "jersey_home_colors"
-    t.string "jersey_away_colors"
-    t.string "team_country"
-    t.string "team_players"
-  end
-
-  create_table "soccerteams", force: :cascade do |t|
-    t.string "team_name"
-    t.string "jersey_home_colors"
-    t.string "jersey_away_colors"
-    t.string "team_country"
-    t.string "team_players"
+    t.string  "country"
+    t.string  "team_colors"
+    t.string  "flag"
+    t.boolean "active"
   end
 
 end

@@ -10,28 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20180619204233) do
+=======
+ActiveRecord::Schema.define(version: 20180619193331) do
+>>>>>>> Roberts
 
-  create_table "fifa_world_cups", force: :cascade do |t|
-    t.string "name"
-    t.string "matches"
-    t.string "grand_prize"
-    t.string "country_hosting"
+  create_table "fifas", force: :cascade do |t|
+    t.integer "matches_id"
   end
 
   create_table "matches", force: :cascade do |t|
-    t.string  "match_date"
-    t.string  "team_one"
-    t.string  "team_two"
-    t.integer "match_score"
-    t.string  "match_location"
+    t.string "team_one_id"
+    t.string "team_one"
+    t.string "team_two_id"
+    t.string "team_two"
+    t.string "match_winner"
   end
 
   create_table "soccer_teams", force: :cascade do |t|
+<<<<<<< HEAD
     t.string  "country"
     t.string  "team_colors"
     t.string  "flag"
     t.boolean "active"
+=======
+    t.string "team_name"
+    t.string "jersey_home_colors"
+    t.string "jersey_away_colors"
+    t.string "team_country"
+    t.string "team_players"
+>>>>>>> Roberts
   end
 
 end

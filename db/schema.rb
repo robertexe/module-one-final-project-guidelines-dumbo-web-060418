@@ -10,11 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20180619204233) do
-=======
-ActiveRecord::Schema.define(version: 20180619193331) do
->>>>>>> Roberts
+
 
   create_table "fifas", force: :cascade do |t|
     t.integer "matches_id"
@@ -29,18 +26,11 @@ ActiveRecord::Schema.define(version: 20180619193331) do
   end
 
   create_table "soccer_teams", force: :cascade do |t|
-<<<<<<< HEAD
+
     t.string  "country"
     t.string  "team_colors"
     t.string  "flag"
     t.boolean "active"
-=======
-    t.string "team_name"
-    t.string "jersey_home_colors"
-    t.string "jersey_away_colors"
-    t.string "team_country"
-    t.string "team_players"
->>>>>>> Roberts
   end
 
 end

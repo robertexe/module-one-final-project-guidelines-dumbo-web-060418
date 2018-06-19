@@ -10,21 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180618184642) do
-
-  create_table "match", force: :cascade do |t|
-    t.string  "team_one"
-    t.string  "team_two"
-    t.string  "date"
-    t.integer "score"
-    t.string  "stadium"
-  end
+ActiveRecord::Schema.define(version: 20180618211628) do
 
   create_table "matches", force: :cascade do |t|
-    t.text    "name"
-    t.text    "genre"
-    t.integer "age"
-    t.text    "hometown"
+    t.string  "match_date"
+    t.string  "team_one"
+    t.string  "team_two"
+    t.integer "match_score"
+    t.string  "match_location"
+  end
+
+  create_table "players", force: :cascade do |t|
+    t.string "player_name"
+    t.string "team"
+    t.string "match"
+  end
+
+  create_table "soccer_teams", force: :cascade do |t|
+    t.string "team_name"
+    t.string "jersey_home_colors"
+    t.string "jersey_away_colors"
+    t.string "team_country"
+    t.string "team_players"
+  end
+
+  create_table "soccerteams", force: :cascade do |t|
+    t.string "team_name"
+    t.string "jersey_home_colors"
+    t.string "jersey_away_colors"
+    t.string "team_country"
+    t.string "team_players"
   end
 
 end

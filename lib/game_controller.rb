@@ -1,6 +1,4 @@
-class GameController < ActiveRecord::Base
-	belongs_to :soccer_teams
-
+class GameController
 	def self.welcome_message
 		welcome_message = <<HEREDOC
 

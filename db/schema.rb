@@ -10,30 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180620143830) do
+ActiveRecord::Schema.define(version: 20180620201308) do
 
-
-  create_table "fifas", force: :cascade do |t|
-    t.integer "matches_id"
-  end
-
-  create_table "fifas", force: :cascade do |t|
-    t.integer "matches_id"
+  create_table "game_controllers", force: :cascade do |t|
+    t.integer "match_id"
+    t.integer "soccer_teams_id"
+    t.integer "fifas_id"
+    t.integer "user_id"
   end
 
   create_table "matches", force: :cascade do |t|
-    t.integer "match_name_id"
-    t.string  "match_name"
     t.integer "team_one_id"
-    t.string  "team_one_name"
     t.integer "team_two_id"
-    t.string  "team_two_name"
-    t.string  "match_location"
-    t.string  "match_winner"
   end
 
   create_table "soccer_teams", force: :cascade do |t|
-
     t.string  "country"
     t.string  "team_colors"
     t.string  "flag"

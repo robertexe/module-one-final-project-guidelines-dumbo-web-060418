@@ -19,5 +19,7 @@ def choose_team
 	favorite = gets.chomp
 end
 
+def method_name
+	Match.new(favorite)
 
-choose_team
+end

@@ -1,4 +1,4 @@
 class Match < ActiveRecord::Base
-	belongs_to :fifa_world_cup
+	belongs_to :game_controller
 	has_many :soccer_teams
 end

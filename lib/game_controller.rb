@@ -1,14 +1,7 @@
 class GameController < ActiveRecord::Base
-	has_many :match
-	has_many :soccer_teams
+	belongs_to :soccer_teams
 
-	@@all = []
-
-	def initialize
-		@@all <<  self
-	end
-
-	def welcome_message
+	def self.welcome_message
 		welcome_message = <<HEREDOC
 
 		#     # ####### #        #####  ####### #     # #######    ####### #######    ######  #######  #####  #    #    ######     #    ######  ####### ######      #####   #####  ###  #####   #####  ####### ######   #####
@@ -22,8 +15,8 @@ HEREDOC
 		puts welcome_message
 	end
 
-	def little_fifa_message
-		ifa_theme_message = <<HEREDOC
+	def self.little_fifa_message
+		fifa_theme_message = <<HEREDOC
 		#    # # ##### #    #      ##      #      # ##### ##### #      ######    ###### # ######   ##       ####   ####   ####   ####  ###### #####
 		#    # #   #   #    #     #  #     #      #   #     #   #      #         #      # #       #  #     #      #    # #    # #    # #      #    #
 		#    # #   #   ######    #    #    #      #   #     #   #      #####     #####  # #####  #    #     ####  #    # #      #      #####  #    #
@@ -31,6 +24,6 @@ HEREDOC
 		##  ## #   #   #    #    #    #    #      #   #     #   #      #         #      # #      #    #    #    # #    # #    # #    # #      #   #
 		#    # #   #   #    #    #    #    ###### #   #     #   ###### ######    #      # #      #    #     ####   ####   ####   ####  ###### #    #
 HEREDOC
+	puts fifa_theme_message
 	end
-
 end

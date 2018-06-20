@@ -16,12 +16,3 @@ Match.new(name_id: "FIFA World Cup 2018", match_id: "Match 4", match_location: "
 Match.new(name_id: "FIFA World Cup 2018", match_id: "Match 5", match_location: "Volgograd Arena", team_one_id: 1/2, team_two_id: 3/4, match_score: nil, match_winner: nil)
 Match.new(name_id: "FIFA World Cup 2018", match_id: "Match 6", match_location: "Spartak Stadium", team_one_id: 5/6, team_two_id: 7/8, match_score: nil, match_winner: nil)
 Match.new(name_id: "FIFA World Cup 2018", match_id: "Match 7", match_location: "Kaliningrad Stadium", team_one_id: 1/2/3/4, team_two_id: 5/6/7/8, match_score: nil, match_winner: nil)
-
-
-"Samara Arena"
-"Ekaterinburg Arena"
-"Luzhniki Stadium"
-"Nizhny Novgorod Stadium"
-"Volgograd Arena"
-"Spartak Stadium"
-"Kaliningrad Stadium"

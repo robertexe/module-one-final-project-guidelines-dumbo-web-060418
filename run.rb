@@ -11,6 +11,8 @@ def welcome_message
 	GameController.little_fifa_message
 end
 
+welcome_message
+
 def choose_team
 	puts "Please select one of the following teams listed."
 	SoccerTeam.all.each do |el|
@@ -19,7 +21,7 @@ def choose_team
 	favorite = gets.chomp
 end
 
-def method_name
-	Match.new(favorite)
-
-end
+# def method_name
+# 	Match.new(favorite)
+#
+# end

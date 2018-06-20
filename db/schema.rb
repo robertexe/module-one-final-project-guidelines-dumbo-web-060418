@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180620011116) do
+ActiveRecord::Schema.define(version: 20180620143830) do
 
   create_table "fifa_world_cups", force: :cascade do |t|
     t.string "name"
@@ -24,12 +24,13 @@ ActiveRecord::Schema.define(version: 20180620011116) do
   end
 
   create_table "matches", force: :cascade do |t|
-    t.string  "name_id"
-    t.string  "match_id"
-    t.string  "match_location"
+    t.integer "match_name_id"
+    t.string  "match_name"
     t.integer "team_one_id"
+    t.string  "team_one_name"
     t.integer "team_two_id"
-    t.integer "match_score"
+    t.string  "team_two_name"
+    t.string  "match_location"
     t.string  "match_winner"
   end
 

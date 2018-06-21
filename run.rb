@@ -8,7 +8,7 @@ require 'pry'
 def welcome_message
 	GameController.welcome_message
 end
-
+system "clear"
 puts welcome_message
 # binding.pry
 sleep 5
@@ -47,7 +47,7 @@ def choose_team
 			puts "Is your finger shaking?"
 			sleep 2
 			puts "That is not a valid team!"
-			puts "🖥 Please type the name as it apears on your screen 🖥"
+			puts "|  🖥  Please type the name as it apears on your screen  🖥  |"
 			sleep 3
 			SoccerTeam.all.each do |el|
 				puts "  #{el.flag}  |  #{el.country}"

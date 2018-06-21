@@ -16,5 +16,5 @@ def run_script
 	game.array_of_teams
 	game.choose_team
 end
-
+# asdfasdf
 run_script

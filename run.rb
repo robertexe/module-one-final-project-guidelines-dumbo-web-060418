@@ -29,9 +29,6 @@ def choose_team
 	# Prints a friendly list of teams wit flasg
 	SoccerTeam.all.each do |el|
 		puts "  #{el.flag}  |  #{el.country}"
-		# I NEED TO FIX WHY IT PRINTS:
-		# D, [2018-06-21T09:12:05.306403 #21907] DEBUG -- :   SoccerTeam Load (1.4ms)  SELECT "soccer_teams".* FROM "soccer_teams"
-		# beore printing the each Flag / Country
 	end
 	# Asks user to choose a team and set it to favorite variable
 	favorite = gets.chomp

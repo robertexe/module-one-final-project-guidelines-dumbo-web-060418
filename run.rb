@@ -14,7 +14,7 @@ end
 welcome_message
 
 def choose_team
-	puts "Please select one of the following teams listed."
+	puts "Welcome to the Please select one of the following teams listed."
 	SoccerTeam.all.each do |el|
 		puts el.country
 	end

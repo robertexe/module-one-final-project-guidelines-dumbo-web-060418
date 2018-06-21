@@ -133,6 +133,13 @@ class GameController < ActiveRecord::Base
 		end
 	end
 
+	def random_rival
+		rivals_array = SoccerTeam.all.map do |team|
+			team.country
+		end
+		binding.pry
+	end
+
 	def create_match
 		Match.new(game.soccer_team_id, )
 	end

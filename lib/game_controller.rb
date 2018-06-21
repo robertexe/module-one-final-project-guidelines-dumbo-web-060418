@@ -1,3 +1,4 @@
+require 'pry'
 class GameController < ActiveRecord::Base
 
 	belongs_to :match
@@ -83,11 +84,11 @@ class GameController < ActiveRecord::Base
 		end
 		# Asks user to choose a team and set it to favorite variable
 		favorite = gets.chomp
-
 		if teams.include?(favorite)
 			system "clear"
 			favorite_team = SoccerTeam.find_by(country: favorite)
 			self.update(soccer_team_id: favorite_team.id)
+
 			puts GameController.bulletin_board
 			puts "Great!! #{favorite} is my favorite team too!!"
 			sleep 1
@@ -115,7 +116,9 @@ class GameController < ActiveRecord::Base
 			puts GameController.bulletin_board
 			puts "Great! Now let's create a match!"
 			sleep 3
-			#Run the #create_match method
+			random_rival
+			get_rival_id
+			create_match
 
 		elsif answer == "No"
 			system "clear"
@@ -133,17 +136,23 @@ class GameController < ActiveRecord::Base
 		end
 	end
 
+	def rivals_array
+		rival_array = teams.delete_if {|team| team == favorite}
+	end
+
 	def random_rival
-		rivals_array = SoccerTeam.all.map do |team|
-			team.country
-		end
-		binding.pry
+  	rivals_array.sample
+	end
+
+	def get_rival_id
+		SoccerTeam.find_by(country: random_rival).id
 	end
 
 	def create_match
-		Match.new(game.soccer_team_id, )
+		favorite_team = SoccerTeam.find_by(country: favorite)
+		self.update(soccer_team_id: favorite_team.id)
+		# pass with hash explicitly name team_one_id etc
+		Match.new(team_one_id: game.soccer_team_id, team_two_id: get_rival_id)
 	end
-
-
-
+	##binding.pry
 end

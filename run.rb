@@ -10,11 +10,13 @@ def run_script
 	game = GameController.new
 	system "clear"
 	puts GameController.welcome_message
-	sleep 4
+	#sleep 4
 	system "clear"
 	puts GameController.bulletin_board
 	game.array_of_teams
 	game.choose_team
+	# random_rival
+	# get_rival_id
+	# create_match
 end
-# asdfasdf
 run_script

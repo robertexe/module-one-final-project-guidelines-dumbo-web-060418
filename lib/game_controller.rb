@@ -85,10 +85,9 @@ class GameController < ActiveRecord::Base
 		favorite = gets.chomp
 
 		if teams.include?(favorite)
+			system "clear"
 			favorite_team = SoccerTeam.find_by(country: favorite)
 			self.update(soccer_team_id: favorite_team.id)
-			binding.pry
-
 			puts GameController.bulletin_board
 			puts "Great!! #{favorite} is my favorite team too!!"
 			sleep 1
@@ -136,7 +135,7 @@ class GameController < ActiveRecord::Base
 
 	def create_match
 		# Team.find_by(country: favorite)
-		# game.soccer_teams
+		game.soccer_teams
 	end
 
 

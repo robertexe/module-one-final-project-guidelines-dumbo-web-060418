@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180620201308) do
+ActiveRecord::Schema.define(version: 20180621160509) do
 
   create_table "game_controllers", force: :cascade do |t|
     t.integer "match_id"
-    t.integer "soccer_teams_id"
+    t.integer "soccer_team_id"
     t.integer "fifas_id"
     t.integer "user_id"
   end

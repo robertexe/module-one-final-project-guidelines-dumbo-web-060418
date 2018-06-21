@@ -70,69 +70,87 @@ class GameController < ActiveRecord::Base
 			team.country
 		end
 	end
+	# favorite_team = SoccerTeam.find_by(country: favorite)
+	# self.update(soccer_team_id: favorite_team.id)
+
+	def get_ready_message
+		system "clear"
+		puts "Great!! #{favorite} is my favorite team too!!"
+		sleep 1
+		puts "Now, let's play the first match!!"
+		puts "Are you ready?"
+		puts "|  Yes  |  No  |"
+	end
+
+
+
+	def invalid_team
+		system "clear"
+		puts "Hey! What's the matter?"
+		puts "Is your finger shaking?"
+		sleep 2
+		puts "#{favorite} is not a valid team!"
+		puts "|  🖥  Please type the name as it apears on your screen  🖥  |"
+		sleep 3
+	end
+
+	def brave
+		puts GameController.bulletin_board
+		puts "Great! Now let's create a match!"
+		sleep 3
+	end
+
+	def coward
+		system "clear"
+		puts GameController.bulletin_board
+		puts "Have a great day. Bye!"
+		exit
+	end
+
+	def input_favorite
+		gets.chomp
+	end
 
 	def choose_team
 		system "clear"
 		teams = array_of_teams
-
 		puts GameController.bulletin_board
-
-		puts "Please choose your team form the following teams listed."
-		# Prints a friendly list of teams wit flags
+		puts "Please choose your team from the list below."
 		SoccerTeam.all.each do |el|
 			puts "  #{el.flag}  |  #{el.country}"
 		end
-		# Asks user to choose a team and set it to favorite variable
-		favorite = gets.chomp
-		if teams.include?(favorite)
-			system "clear"
-			favorite_team = SoccerTeam.find_by(country: favorite)
-			self.update(soccer_team_id: favorite_team.id)
-
-			puts GameController.bulletin_board
-			puts "Great!! #{favorite} is my favorite team too!!"
-			sleep 1
-			puts "Now, let's play the first match!!"
-			puts "Are you ready?"
-			puts "|  Yes  |  No  |"
-
-			tell_me_yes
-		else
-			system "clear"
-			puts "Hey! What's the matter?"
-			puts "Is your finger shaking?"
-			sleep 2
-			puts "#{favorite} is not a valid team!"
-			puts "|  🖥  Please type the name as it apears on your screen  🖥  |"
-			sleep 3
-			choose_team
-		end
+		input_favorite
+		logic
 	end
 
-	def tell_me_yes
-		answer = gets.chomp
-		if answer == "Yes"
-			system "clear"
-			puts GameController.bulletin_board
-			puts "Great! Now let's create a match!"
-			sleep 3
-			random_rival
-			get_rival_id
-			create_match
+	def favorite_team
+		favorite_team = SoccerTeam.find_by(country: input_favorite)
+	end
 
-		elsif answer == "No"
-			system "clear"
-			puts GameController.bulletin_board
-			puts "Have a great day. Bye!"
-			sleep 3
+	def favorite_team_id
+	  favorite_team = SoccerTeam.find_by(country: input_favorite).id
+	end
 
-		else
-			puts GameController.bulletin_board
-			puts "Well '#{answer}' is not avalid answer"
-			puts "Please enter Yes or No"
-			puts "Ready?"
-			puts "|  Yes  |  No  |"
-			tell_me_yes
+	def logic
+		loop do
+			if !array_of_teams.include?(input_favorite)
+				invalid_team
+				choose_team
+				binding.pry
+			break if array_of_teams.include?(input_favorite) == true
+			end
+			get_ready_message
+			answer = gets.chomp
+			loop do
+				case answer
+				when "Yes"
+					brave
+				when "No"
+					coward
+				else
+					puts "Well #{answer} is not a valid answer"
+				end
+			end
 		end
 	end
 
@@ -148,11 +166,10 @@ class GameController < ActiveRecord::Base
 		SoccerTeam.find_by(country: random_rival).id
 	end
 
-	def create_match
-		favorite_team = SoccerTeam.find_by(country: favorite)
-		self.update(soccer_team_id: favorite_team.id)
-		# pass with hash explicitly name team_one_id etc
-		Match.new(team_one_id: game.soccer_team_id, team_two_id: get_rival_id)
-	end
-	##binding.pry
+	# def create_match
+	# 	favorite_team = SoccerTeam.find_by(country: favorite)
+	# 	self.update(soccer_team_id: favorite_team.id)
+	# 	# pass with hash explicitly name team_one_id etc
+	# 	Match.new(team_one_id: game.soccer_team_id, team_two_id: get_rival_id)
+	# end
 end

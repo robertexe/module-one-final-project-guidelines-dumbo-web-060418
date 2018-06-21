@@ -107,12 +107,12 @@ class GameController < ActiveRecord::Base
 	end
 
 	def input_favorite
-		gets.chomp
+		user_input = gets.chomp
+		user_input
 	end
 
 	def choose_team
 		system "clear"
-		teams = array_of_teams
 		puts GameController.bulletin_board
 		puts "Please choose your team from the list below."
 		SoccerTeam.all.each do |el|
@@ -160,6 +160,7 @@ class GameController < ActiveRecord::Base
 	end
 
 	def rivals_array
+
 		rival_array = teams.delete_if {|team| team == favorite}
 	end
 
@@ -171,10 +172,8 @@ class GameController < ActiveRecord::Base
 		SoccerTeam.find_by(country: random_rival).id
 	end
 
-	# def create_match
-	# 	favorite_team = SoccerTeam.find_by(country: favorite)
-	# 	self.update(soccer_team_id: favorite_team.id)
-	# 	# pass with hash explicitly name team_one_id etc
-	# 	Match.new(team_one_id: game.soccer_team_id, team_two_id: get_rival_id)
-	# end
+	def create_match
+		# pass with hash explicitly name team_one_id etc
+		Match.new(team_one_id: self.soccer_team_id, team_two_id: get_rival_id)
+	end
 end

@@ -15,11 +15,7 @@ def run_script
 	puts GameController.bulletin_board
 	game.array_of_teams
 	game.choose_team
-	game.favorite_team
-	game.favorite_team_id
-	# random_rival
-	# get_rival_id
-	# create_match
+	game.rivals_array(favorite)
 end
 
 

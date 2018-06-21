@@ -75,7 +75,7 @@ class GameController < ActiveRecord::Base
 
 	def get_ready_message
 		system "clear"
-		puts "Great!! #{favorite} is my favorite team too!!"
+		puts "Great!! #{self.soccer_team.country} is my favorite team too!!"
 		sleep 1
 		puts "Now, let's play the first match!!"
 		puts "Are you ready?"
@@ -84,14 +84,13 @@ class GameController < ActiveRecord::Base
 
 
 
-	def invalid_team
+	def invalid_team(team)
 		system "clear"
 		puts "Hey! What's the matter?"
 		puts "Is your finger shaking?"
 		sleep 2
-		puts "#{favorite} is not a valid team!"
+		puts "#{team} is not a valid team!"
 		puts "|  🖥  Please type the name as it apears on your screen  🖥  |"
-		sleep 3
 	end
 
 	def brave
@@ -119,38 +118,44 @@ class GameController < ActiveRecord::Base
 		SoccerTeam.all.each do |el|
 			puts "  #{el.flag}  |  #{el.country}"
 		end
-		input_favorite
-		logic
+		favorite = self.input_favorite
+		self.logic(favorite)
 	end
 
 	def favorite_team
 		favorite_team = SoccerTeam.find_by(country: input_favorite)
 	end
 
-	def favorite_team_id
-	  favorite_team = SoccerTeam.find_by(country: input_favorite).id
+	def favorite_team_id(favorite)
+	  favorite_team = SoccerTeam.find_by(country: favorite).id
 	end
 
-	def logic
-		loop do
-			if !array_of_teams.include?(input_favorite)
-				invalid_team
-				choose_team
-				binding.pry
-			break if array_of_teams.include?(input_favorite) == true
-			end
-			get_ready_message
+	def logic(team)
+		if !array_of_teams.include?(team)
+			self.invalid_team(team)
+			self.choose_team
+		else
+			favorite_id = self.favorite_team_id(team)
+			self.update(soccer_team_id: favorite_id)
+
+			self.get_ready_message
 			answer = gets.chomp
-			loop do
-				case answer
-				when "Yes"
-					brave
-				when "No"
-					coward
-				else
-					puts "Well #{answer} is not a valid answer"
-				end
-			end
+			yes_or_no(answer)
+		end
+
+	end
+
+	def yes_or_no(answer)
+		case answer
+			when "Yes"
+				brave
+			when "No"
+				coward
+			else
+				puts "Well #{answer} is not a valid answer"
+				self.get_ready_message
+				answer = gets.chomp
+				yes_or_no(answer)
 		end
 	end
 

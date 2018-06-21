@@ -134,8 +134,7 @@ class GameController < ActiveRecord::Base
 	end
 
 	def create_match
-		# Team.find_by(country: favorite)
-		game.soccer_teams
+		Match.new(game.soccer_team_id, )
 	end
 
 

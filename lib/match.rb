@@ -3,7 +3,7 @@ class Match < ActiveRecord::Base
 	has_many :soccer_teams
 
 	def team_one
-		SoccerTeam.find(self.team_one_id)
+		# SoccerTeam.find(self.team_one_id)
 	end
 
 	def self.team_two

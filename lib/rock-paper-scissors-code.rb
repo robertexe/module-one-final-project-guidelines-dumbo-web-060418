@@ -22,7 +22,7 @@ def game_controller_chooses ## RETURNS  either rock paper or scissors
 	end
 end
 
-def win_or_lose(result)
+def each_round(result)
   if result == :win
     puts "User get a goal"
     SCORE[:user] += 1
@@ -30,6 +30,10 @@ def win_or_lose(result)
     puts "rival team gets a goal"
     SCORE[:fifa] += 1
   end
+end
+
+def final_score(rps_match)
+
 end
 
 def play_match
@@ -44,30 +48,26 @@ def play_match
     when 'rock', '1'
       puts "You chose     : Rock"
       puts "Your rival chose: #{rivals_choice.capitalize}"
-      win_or_lose(GAMEFLOW[:rock][rivals_choice])
+      each_round(GAMEFLOW[:rock][rivals_choice])
     when 'paper', '2'
       puts "You chose     : Paper"
       puts "Computer chose: #{rivals_choice.capitalize}"
-      win_or_lose(GAMEFLOW[:paper][rivals_choice])
+      each_round(GAMEFLOW[:paper][rivals_choice])
     when 'scissors', '3'
       puts "You chose     : Scissors"
       puts "Computer chose: #{rivals_choice.capitalize}"
-      win_or_lose(GAMEFLOW[:scissors][rivals_choice])
+      each_round(GAMEFLOW[:scissors][rivals_choice])
     else
       puts "Invalid choice!"
   end
-  puts "The score is currently User #{SCORE[:user]}  | Rival #{SCORE[:fifa]} "
-
-	if SCORE[:fifa] == 2 || SCORE[:user] == 2
-		
+	if SCORE[:fifa] == 3
+		puts "Final score is User #{SCORE[:user]}  | Rival #{SCORE[:fifa]}"
+	elsif SCORE[:user] == 3
+		puts "Final score is User #{SCORE[:user]}  | Rival #{SCORE[:fifa]}"
+	else
+		puts "The score is currently User #{SCORE[:user]}  | Rival #{SCORE[:fifa]} "
+		play_match
 	end
-
-
-
-  # else
-  #   puts "Your total score: #{SCORE[:user]}  |  Rivals total score: #{SCORE[fifa]}  |  Total draws: #{SCORE[:draws]}"
-  #   puts "Thank you for playing!"
-  # end
 end
 
 play_match

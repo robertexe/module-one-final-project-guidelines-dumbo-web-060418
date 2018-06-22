@@ -32,7 +32,7 @@ def each_round(result)
   elsif result == :lose
     puts "😱 😱 😱 The rival's team made a goal 😭 😭 😭".red
     SCORE[:fifa] += 1
-  elsif result == :draws
+  elsif result == :tie
     puts "🙅 🙅 🙅 THIS GAME HAS NO DRAWS! 🙅 🙅 🙅".red
   end
 end
@@ -71,8 +71,14 @@ def play_match
   end
 	if SCORE[:fifa] == 3
 		puts "Final score is User #{SCORE[:user]}  | Rival #{SCORE[:fifa]}".yellow
+    sleep 3
+    system "clear"
+    exit
 	elsif SCORE[:user] == 3
 		puts "Final score is User #{SCORE[:user]}  | Rival #{SCORE[:fifa]}".yellow
+    sleep 3
+    system "clear"
+    exit
 	else
 		puts "The score is currently User #{SCORE[:user]}  | Rival #{SCORE[:fifa]} ".green
 		play_match

@@ -20,26 +20,18 @@ class GameController < ActiveRecord::Base
 		▐░▌          ▐░░░░░░░░░░░▌▐░▌          ▐░▌       ▐░▌
 		 ▀            ▀▀▀▀▀▀▀▀▀▀▀  ▀            ▀         ▀
 
-		 ▄▄▄▄▄▄▄▄▄▄▄               ▄▄▄▄▄▄▄▄▄▄▄               ▄▄▄▄▄▄▄▄▄▄▄
-		▐░░░░░░░░░░░▌             ▐░░░░░░░░░░░▌             ▐░░░░░░░░░░░▌
-		▐░█▀▀▀▀▀▀▀█░▌             ▐░█▀▀▀▀▀▀▀█░▌             ▐░█▀▀▀▀▀▀▀▀▀
-		▐░▌       ▐░▌             ▐░▌       ▐░▌             ▐░▌
-		▐░█▄▄▄▄▄▄▄█░▌ ▄▄▄▄▄▄▄▄▄▄▄ ▐░█▄▄▄▄▄▄▄█░▌ ▄▄▄▄▄▄▄▄▄▄▄ ▐░█▄▄▄▄▄▄▄▄▄
-		▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌
-		▐░█▀▀▀▀█░█▀▀  ▀▀▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀█░▌
-		▐░▌     ▐░▌               ▐░▌                                 ▐░▌
-		▐░▌      ▐░▌              ▐░▌                        ▄▄▄▄▄▄▄▄▄█░▌
-		▐░▌       ▐░▌             ▐░▌                       ▐░░░░░░░░░░░▌
-		 ▀         ▀               ▀                         ▀▀▀▀▀▀▀▀▀▀▀
 
-		 ____ ____ _________ ____ ____ ____ ____ ____ ____
-	 	||b |||y |||       |||R |||o |||b |||e |||r |||t ||
-	 	||__|||__|||_______|||__|||__|||__|||__|||__|||__||
-	 	|/__\|/__\|/_______\|/__\|/__\|/__\|/__\|/__\|/__\|
-	 		____ ____ ____ _________ ____ ____ ____ ____ ____
-	 	||a |||n |||d |||       |||M |||i |||c |||h |||. ||
-	 	||__|||__|||__|||_______|||__|||__|||__|||__|||__||
-	 	|/__\|/__\|/__\|/_______\|/__\|/__\|/__\|/__\|/__\|
+		 ╦═╗┌─┐┌─┐┬┌─   ╔═╗┌─┐┌─┐┌─┐┬─┐   ╔═╗┌─┐┬┌─┐┌─┐┌─┐┬─┐┌─┐
+		 ╠╦╝│ ││  ├┴┐───╠═╝├─┤├─┘├┤ ├┬┘───╚═╗│  │└─┐└─┐│ │├┬┘└─┐
+		 ╩╚═└─┘└─┘┴ ┴   ╩  ┴ ┴┴  └─┘┴└─   ╚═╝└─┘┴└─┘└─┘└─┘┴└─└─┘
+
+
+		 ┌┐ ┬ ┬  ╦═╗┌─┐┌┐ ┌─┐┬─┐┌┬┐
+		 ├┴┐└┬┘  ╠╦╝│ │├┴┐├┤ ├┬┘ │
+		 └─┘ ┴   ╩╚═└─┘└─┘└─┘┴└─ ┴
+		 ┌─┐┌┐┌┌┬┐  ╔╦╗┬┌─┐┬ ┬
+		 ├─┤│││ ││  ║║║││  ├─┤
+		 ┴ ┴┘└┘─┴┘  ╩ ╩┴└─┘┴ ┴
 		HEREDOC
   end
 
@@ -59,10 +51,7 @@ class GameController < ActiveRecord::Base
 		88   8 8   8 8e   8eee8e eeee 88     8eee8 8eee8 8eee 8eee8e eeee 88 8e   8e 8eeee 8eeee 8   8 8eee8e 8eeee 88
 		88   8 8   8 88   88   8      88     88  8 88    88   88   8  e   88 88   88    88    88 8   8 88   8    88
 		88   8 8eee8 88e8 88   8      88     88  8 88    88ee 88   8  8eee88 88e8 88 8ee88 8ee88 8eee8 88   8 8ee88 88
-
-
-	HEREDOC
-
+		HEREDOC
 	end
 
 	def array_of_teams
@@ -75,34 +64,37 @@ class GameController < ActiveRecord::Base
 
 	def get_ready_message
 		system "clear"
-		puts "Great!! #{self.soccer_team.country} is my favorite team too!!"
+		puts GameController.bulletin_board.blue
+		puts "Great!! #{self.soccer_team.country} is my favorite team too!!".green
 		sleep 1
-		puts "Now, let's play the first match!!"
-		puts "Are you ready?"
-		puts "|  Yes  |  No  |"
+		puts "Now, let's play the first match!!".green
+		puts "Are you ready?".green
+		puts "|  Yes  |  No  |".green
 	end
 
 
 
 	def invalid_team(team)
 		system "clear"
-		puts "Hey! What's the matter?"
-		puts "Is your finger shaking?"
-		sleep 2
-		puts "#{team} is not a valid team!"
-		puts "|  🖥  Please type the name as it apears on your screen  🖥  |"
+		puts GameController.bulletin_board.blue
+		puts "Hey! What's the matter?".red
+		puts "Is your finger shaking?".red
+		puts "#{team} is not a valid team!".red
+		puts "|  🖥  Please type the name as it apears on your screen  🖥  |".green
+		sleep 3
 	end
 
 	def brave
-		puts GameController.bulletin_board
-		puts "Great! Now let's create a match!"
+		system "clear"
+		puts GameController.bulletin_board.blue
+		puts "Great! Now let's create a match!".green
 		sleep 3
 	end
 
 	def coward
 		system "clear"
-		puts GameController.bulletin_board
-		puts "Have a great day. Bye!"
+		puts GameController.bulletin_board.blue
+		puts "Have a great day. Bye!".yellow
 		exit
 	end
 
@@ -113,8 +105,8 @@ class GameController < ActiveRecord::Base
 	def choose_team
 		system "clear"
 		teams = array_of_teams
-		puts GameController.bulletin_board
-		puts "Please choose your team from the list below."
+		puts GameController.bulletin_board.blue
+		puts "Please choose your team from the list below.".green
 		SoccerTeam.all.each do |el|
 			puts "  #{el.flag}  |  #{el.country}"
 		end

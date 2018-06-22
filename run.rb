@@ -9,8 +9,8 @@ require 'pry'
 def run_script
 	game = GameController.new
 	system "clear"
-	puts GameController.welcome_message
-	#sleep 4
+	puts GameController.welcome_message.blue
+	sleep 5
 	system "clear"
 	puts GameController.bulletin_board
 	game.array_of_teams

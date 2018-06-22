@@ -67,4 +67,3 @@
   		play_match
   	end
   end
-end

@@ -17,9 +17,9 @@ def run_script
 	game.choose_team
 	game.favorite_team
 	game.favorite_team_id
-	# random_rival
-	# get_rival_id
-	# create_match
+	game.random_rival
+	game.get_rival_id
+	game.create_match
 end
 
 

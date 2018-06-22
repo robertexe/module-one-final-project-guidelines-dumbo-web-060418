@@ -163,10 +163,11 @@ class GameController < ActiveRecord::Base
 		SoccerTeam.find_by(country: random_rival).id
 	end
 
-	# def create_match
-	# 	favorite_team = SoccerTeam.find_by(country: favorite)
-	# 	self.update(soccer_team_id: favorite_team.id)
-	# 	# pass with hash explicitly name team_one_id etc
-	# 	Match.new(team_one_id: game.soccer_team_id, team_two_id: get_rival_id)
-	# end
+	def create_match
+		binding.pry
+		favorite_team = SoccerTeam.find_by(country: favorite)
+		self.update(soccer_team_id: favorite_team.id)
+		# pass with hash explicitly name team_one_id etc
+		Match.new(team_one_id: game.soccer_team_id, team_two_id: get_rival_id)
+	end
 end

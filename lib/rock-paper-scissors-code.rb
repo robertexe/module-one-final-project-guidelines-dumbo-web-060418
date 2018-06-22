@@ -9,66 +9,90 @@
     :scissors => { :rock => :lose,  :paper => :win,   :scissors => :tie },
   }
 
-  def game_controller_chooses ## RETURNS  either rock paper or scissors
-    choice = rand(1..3)
-    if choice == 1
-  		choice = :rock
-  	elsif choice == 2
-  		choice = :paper
-  	elsif choice == 3
-  		choice = :scissors
-  	end
-  end
 
-  def each_round(result)
-    if result == :win
-      puts "User get a goal"
-      SCORE[:user] += 1
-    elsif result == :lose
-      puts "rival team gets a goal"
-      SCORE[:fifa] += 1
-    end
+def game_controller_chooses ## RETURNS  either rock paper or scissors
+  choice = rand(1..3)
+  if choice == 1
+    emoji = "👊"
+		choice = :rock
+	elsif choice == 2
+    emoji = "🖐"
+		choice = :paper
+	elsif choice == 3
+    emoji = "✌️"
+		choice = :scissors
+	end
+end
+
+def each_round(result)
+  if result == :win
+    puts "🤪 🤪 🤪 Your team made a goal 😎 😎 😎".green
+    SCORE[:user] += 1
+  elsif result == :lose
+    puts "😱 😱 😱 The rival's team made a goal 😭 😭 😭".red
+    SCORE[:fifa] += 1
+  elsif result == :tie
+    puts "🙅 🙅 🙅 THIS GAME HAS NO DRAWS! 🙅 🙅 🙅".red
   end
 
   def final_score(rps_match)
 
   end
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Roberts
-  def play_match
-    puts '
-    |---------------------------------|
-    |        FIFA  |  RPS
-    |---------------------------------|
-    '
-    puts "Enter choice: Rock (1), Paper (2), or Scissors (3)"
-    rivals_choice = game_controller_chooses
-    case gets.chomp.to_s.downcase
-      when 'rock', '1'
-        puts "You chose     : Rock"
-        puts "Your rival chose: #{rivals_choice.capitalize}"
-        each_round(GAMEFLOW[:rock][rivals_choice])
-      when 'paper', '2'
-        puts "You chose     : Paper"
-        puts "Computer chose: #{rivals_choice.capitalize}"
-        each_round(GAMEFLOW[:paper][rivals_choice])
-      when 'scissors', '3'
-        puts "You chose     : Scissors"
-        puts "Computer chose: #{rivals_choice.capitalize}"
-        each_round(GAMEFLOW[:scissors][rivals_choice])
-      else
-        puts "Invalid choice!"
-    end
-  	if SCORE[:fifa] == 3
-  		puts "Final score is User #{SCORE[:user]}  | Rival #{SCORE[:fifa]}"
-  	elsif SCORE[:user] == 3
-  		puts "Final score is User #{SCORE[:user]}  | Rival #{SCORE[:fifa]}"
-  	else
-  		puts "The score is currently User #{SCORE[:user]}  | Rival #{SCORE[:fifa]} "
-  		play_match
-  	end
+
+
+
+
+def play_match
+  puts "Please select one of the nest options:".green
+  puts "👊  Rock (1)".blue
+  puts "🖐  Paper (2)".blue
+  puts "✌️  Scissors (3)".blue
+  rivals_choice = game_controller_chooses
+  case gets.chomp.to_s.downcase
+    when 'rock', '1'
+      system "clear"
+      puts GameController.bulletin_board.blue
+      puts "You chose     : Rock 👊".green
+      puts "Your rival chose: #{rivals_choice.capitalize} - #{puts_emoji(rivals_choice)}".blue
+      each_round(GAMEFLOW[:rock][rivals_choice])
+    when 'paper', '2'
+      system "clear"
+      puts GameController.bulletin_board.blue
+      puts "You chose     : Paper 🖐".green
+      puts "Computer chose: #{rivals_choice.capitalize} - #{puts_emoji(rivals_choice)}".blue
+      each_round(GAMEFLOW[:paper][rivals_choice])
+    when 'scissors', '3'
+      system "clear"
+      puts GameController.bulletin_board.blue
+      puts "You chose     : Scissors ✌️".green
+      puts "Computer chose: #{rivals_choice.capitalize} - #{puts_emoji(rivals_choice)}".blue
+      each_round(GAMEFLOW[:scissors][rivals_choice])
+    else
+      puts "Invalid choice!".red
+  end
+	if SCORE[:fifa] == 3
+		puts "Final score is User #{SCORE[:user]}  | Rival #{SCORE[:fifa]}".yellow
+    sleep 3
+    system "clear"
+    exit
+	elsif SCORE[:user] == 3
+		puts "Final score is User #{SCORE[:user]}  | Rival #{SCORE[:fifa]}".yellow
+    sleep 3
+    system "clear"
+    exit
+	else
+		puts "The score is currently User #{SCORE[:user]}  | Rival #{SCORE[:fifa]} ".green
+		play_match
+	end
+end
+#
+def puts_emoji(emoji)
+  if emoji == :rock
+    "👊"
+  elsif emoji == :paper
+    "🖐"
+  elsif emoji == :scissors
+    "✌️"
   end
 end

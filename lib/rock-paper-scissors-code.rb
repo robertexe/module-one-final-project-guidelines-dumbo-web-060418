@@ -37,23 +37,26 @@ def final_score(rps_match)
 end
 
 def play_match
-  puts '
-  |---------------------------------|
-  |        FIFA  |  RPS
-  |---------------------------------|
-  '
+  # system "clear"
+  # puts GameController.bulletin_board.blue
   puts "Enter choice: Rock (1), Paper (2), or Scissors (3)"
   rivals_choice = game_controller_chooses
   case gets.chomp.to_s.downcase
     when 'rock', '1'
+      system "clear"
+      puts GameController.bulletin_board.blue
       puts "You chose     : Rock"
       puts "Your rival chose: #{rivals_choice.capitalize}"
       each_round(GAMEFLOW[:rock][rivals_choice])
     when 'paper', '2'
+      system "clear"
+      puts GameController.bulletin_board.blue
       puts "You chose     : Paper"
       puts "Computer chose: #{rivals_choice.capitalize}"
       each_round(GAMEFLOW[:paper][rivals_choice])
     when 'scissors', '3'
+      system "clear"
+      puts GameController.bulletin_board.blue
       puts "You chose     : Scissors"
       puts "Computer chose: #{rivals_choice.capitalize}"
       each_round(GAMEFLOW[:scissors][rivals_choice])
@@ -69,5 +72,3 @@ def play_match
 		play_match
 	end
 end
-
-play_match

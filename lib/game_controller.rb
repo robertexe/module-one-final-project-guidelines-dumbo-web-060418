@@ -38,19 +38,23 @@ class GameController < ActiveRecord::Base
 	def self.bulletin_board
 		bulletin_board = <<-HEREDOC
 
-		8   8  8                                                      8"""" 8  8"""" 8""""8
-		8   8  8 eeee e     eeee eeeee eeeeeee eeee    eeeee eeeee    8     8  8     8    8
-		8e  8  8 8    8     8  8 8  88 8  8  8 8         8   8  88    8eeee 8e 8eeee 8eeee8
-		88  8  8 8eee 8e    8e   8   8 8e 8  8 8eee      8e  8   8    88    88 88    88   8
-		88  8  8 88   88    88   8   8 88 8  8 88        88  8   8    88    88 88    88   8
-		88ee8ee8 88ee 88eee 88e8 8eee8 88 8  8 88ee      88  8eee8    88    88 88    88   8
+		 ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄
+		▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌
+		▐░█▀▀▀▀▀▀▀▀▀  ▀▀▀▀█░█▀▀▀▀ ▐░█▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀▀▀▀█░▌
+		▐░▌               ▐░▌     ▐░▌          ▐░▌       ▐░▌
+		▐░█▄▄▄▄▄▄▄▄▄      ▐░▌     ▐░█▄▄▄▄▄▄▄▄▄ ▐░█▄▄▄▄▄▄▄█░▌
+		▐░░░░░░░░░░░▌     ▐░▌     ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌
+		▐░█▀▀▀▀▀▀▀▀▀      ▐░▌     ▐░█▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀▀▀▀█░▌
+		▐░▌               ▐░▌     ▐░▌          ▐░▌       ▐░▌
+		▐░▌           ▄▄▄▄█░█▄▄▄▄ ▐░▌          ▐░▌       ▐░▌
+		▐░▌          ▐░░░░░░░░░░░▌▐░▌          ▐░▌       ▐░▌
+		 ▀            ▀▀▀▀▀▀▀▀▀▀▀  ▀            ▀         ▀
 
-		8"""8                         8""""8                          8""""8                                        8
-		8   8  eeeee eeee e   e       8    8 eeeee eeeee eeee eeeee   8      eeee e  eeeee eeeee eeeee eeeee  eeeee 88
-		8eee8e 8  88 8  8 8   8       8eeee8 8   8 8   8 8    8   8   8eeeee 8  8 8  8   " 8   " 8  88 8   8  8   " 88
-		88   8 8   8 8e   8eee8e eeee 88     8eee8 8eee8 8eee 8eee8e eeee 88 8e   8e 8eeee 8eeee 8   8 8eee8e 8eeee 88
-		88   8 8   8 88   88   8      88     88  8 88    88   88   8  e   88 88   88    88    88 8   8 88   8    88
-		88   8 8eee8 88e8 88   8      88     88  8 88    88ee 88   8  8eee88 88e8 88 8ee88 8ee88 8eee8 88   8 8ee88 88
+
+		 ╦═╗┌─┐┌─┐┬┌─   ╔═╗┌─┐┌─┐┌─┐┬─┐   ╔═╗┌─┐┬┌─┐┌─┐┌─┐┬─┐┌─┐
+		 ╠╦╝│ ││  ├┴┐───╠═╝├─┤├─┘├┤ ├┬┘───╚═╗│  │└─┐└─┐│ │├┬┘└─┐
+		 ╩╚═└─┘└─┘┴ ┴   ╩  ┴ ┴┴  └─┘┴└─   ╚═╝└─┘┴└─┘└─┘└─┘┴└─└─┘
+
 		HEREDOC
 	end
 
@@ -166,6 +170,9 @@ class GameController < ActiveRecord::Base
 		SoccerTeam.find_by(country: random_rival).id
 	end
 
+
 	def create_match
+		play_match
+
 	end
 end

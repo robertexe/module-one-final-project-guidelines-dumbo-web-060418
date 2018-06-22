@@ -10,7 +10,7 @@ def run_script
 	game = GameController.new
 	system "clear"
 	puts GameController.welcome_message.blue
-	sleep 5
+	sleep 2
 	system "clear"
 	# puts GameController.bulletin_board
 	game.array_of_teams
@@ -19,7 +19,6 @@ def run_script
 	game.favorite_team_id
 	game.random_rival
 	game.get_rival_id
-	game.create_match
 end
 
 

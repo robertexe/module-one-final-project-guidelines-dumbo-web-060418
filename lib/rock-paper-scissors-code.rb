@@ -1,14 +1,3 @@
-require 'pry'
-
-
-class Rps
-
-##create class variable with a hash of score
-##create another class to controll the flow of the method
-
-
-def initialize
-end
 
   SCORE = { :fifa => 0, :user => 0, :draws => 0 }
 
@@ -79,5 +68,3 @@ end
   	end
   end
 end
-binding.pry
-# play_match

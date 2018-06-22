@@ -9,13 +9,16 @@ require 'pry'
 def run_script
 	game = GameController.new
 	system "clear"
-	puts GameController.welcome_message
-	#sleep 4
+	puts GameController.welcome_message.blue
+	sleep 2
 	system "clear"
-	puts GameController.bulletin_board
+	# puts GameController.bulletin_board
 	game.array_of_teams
 	game.choose_team
-	game.rivals_array(favorite)
+	game.favorite_team
+	game.favorite_team_id
+	game.random_rival
+	game.get_rival_id
 end
 
 

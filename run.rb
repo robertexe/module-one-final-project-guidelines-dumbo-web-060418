@@ -12,7 +12,7 @@ def run_script
 	puts GameController.welcome_message.blue
 	sleep 5
 	system "clear"
-	puts GameController.bulletin_board
+	# puts GameController.bulletin_board
 	game.array_of_teams
 	game.choose_team
 	game.favorite_team

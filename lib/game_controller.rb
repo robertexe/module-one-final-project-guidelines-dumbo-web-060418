@@ -89,6 +89,7 @@ class GameController < ActiveRecord::Base
 		puts GameController.bulletin_board.blue
 		puts "Great! Now let's create a match!".green
 		sleep 3
+		# create_match
 	end
 
 	def coward
@@ -165,9 +166,9 @@ class GameController < ActiveRecord::Base
 
 	def create_match
 		binding.pry
-		favorite_team = SoccerTeam.find_by(country: favorite)
-		self.update(soccer_team_id: favorite_team.id)
-		# pass with hash explicitly name team_one_id etc
-		Match.new(team_one_id: game.soccer_team_id, team_two_id: get_rival_id)
+	# 	favorite_team = SoccerTeam.find_by(country: favorite)
+	# 	self.update(soccer_team_id: favorite_team.id)
+	# 	# pass with hash explicitly name team_one_id etc
+	# 	Match.new(team_one_id: game.soccer_team_id, team_two_id: get_rival_id)
 	end
 end

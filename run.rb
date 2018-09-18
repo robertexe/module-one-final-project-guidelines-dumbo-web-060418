@@ -19,6 +19,7 @@ def run_script
 	game.favorite_team_id
 	game.random_rival
 	game.get_rival_id
+	
 end
 
 
